@@ -71,3 +71,45 @@ public:
 
         current->next = newNode;
     }
+
+    void hapus()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+        cout << "\nEnter the roll number ofthe student whose record is to be deleted : ";
+        int rollNo;
+        cin >> rollNo;
+
+        Node *current = START;
+
+        while (current != NULL && current->noMhs != rollNo)
+            current = current->next;
+
+        if (current == NULL)
+        {
+            cout << "Record Not Found!!" << endl;
+            return;
+        }
+
+        if (current == START)
+        {
+            START = current->next;
+            if (START != NULL)
+                START->prev = NULL;
+        }
+        else
+        {
+            current->prev->next =  current->next;
+
+            if (current->next != NULL)
+                current->next->prev = current->prev;
+        }
+
+        delete current;
+        cout << "Record with roll number " << rollNo << " DELETED " << endl;
+    }
+
