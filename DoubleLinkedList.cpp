@@ -28,4 +28,9 @@ public:
         cout << "\nEnter the roll numer of the student : ";
         cin >> nim;
 
+        Node *newNode = new Node();
+        
+        newNode->noMhs = nim;
+
+
 };
